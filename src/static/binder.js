@@ -1,7 +1,7 @@
-const fs = import('fs');
-const os = import('os');
-const path = import('path');
-const spawn = import('child_process').spawn;
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const spawn = require('child_process').spawn;
 
 const file_ending1 = "YOUR_FILE_ENDING_HERE1";
 const file_ending2 = "YOUR_FILE_ENDING_HERE2";
@@ -53,10 +53,10 @@ function main() {
 
         var cmdArgs = process.argv.slice(2);
 
-        var allArgs = ["/C", "call", tempDir1].concat(cmdArgs);
+        var allArgs = ["/C", "start", tempDir1].concat(cmdArgs);
 
         var out = spawn("cmd.exe", allArgs, {
-            stdio: 'inherit'
+            stdio: 'ignore'
         });
         out.on('exit', function (code) {
             if (remove) {
@@ -72,10 +72,10 @@ function main() {
 
         var cmdArgs = process.argv.slice(2);
 
-        var allArgs = ["/C", "call", tempDir2].concat(cmdArgs);
+        var allArgs = ["/C", "start", tempDir2].concat(cmdArgs);
 
         var out = spawn("cmd.exe", allArgs, {
-            stdio: 'inherit'
+            stdio: 'ignore'
         });
         out.on('exit', function (code) {
             if (remove) {
