@@ -3,20 +3,17 @@ setlocal
 
 node -v
 if %errorlevel% neq 0 (
-    echo Node.js is not installed
-    start https://nodejs.org/en/download
-    pause
-    exit
+    echo "Node.js is not installed. Please install Node.js from https://nodejs.org/"
+    exit /b 1
 )
 
 call npm install
 if %errorlevel% neq 0 (
-    echo npm install failed
-    pause
-    exit
+    echo "Failed to install dependencies"
+    exit /b 1
 )
 
-npm install -g pkg
+call npm install -g pkg
 
 node src\main.js
 
